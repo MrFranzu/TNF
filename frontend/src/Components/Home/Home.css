@@ -1,0 +1,36 @@
+/* src/Home.css */
+
+.home-container {
+  text-align: center; /* Center-align the text in the container */
+  padding: 20px;
+}
+
+.box-container {
+  display: flex; /* Use flexbox to align the boxes */
+  justify-content: space-around; /* Space out the boxes evenly */
+  gap: 20px; /* Space between the boxes */
+  flex-wrap: wrap; /* Allow wrapping to the next line if needed */
+  margin-top: 20px; /* Space above the boxes */
+}
+
+.box {
+  flex: 1; /* Allow each box to grow equally */
+  max-width: 300px; /* Maximum width for each box */
+  border: 1px solid #ddd; /* Border color */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  background-color: #fff; /* Background color of the box */
+}
+
+.box-image {
+  width: 100%; /* Full width of the box */
+  height: 200px; /* Fixed height for images */
+  object-fit: fill; /* Ensure image covers the area */
+}
+
+.box-description {
+  padding: 10px; /* Padding inside the box */
+  font-size: 1rem; /* Font size for the description */
+  color: #333; /* Text color */
+}

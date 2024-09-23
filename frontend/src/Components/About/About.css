@@ -1,0 +1,13 @@
+/* src/About.css */
+
+.about-container {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding: 20px;
+  text-align: center; /* Center align text */
+}
+
+.about-content {
+  max-width: 800px; /* Set a max width for the text content */
+}

@@ -1,0 +1,165 @@
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.booking-form {
+  padding: 30px;
+  border-radius: 30px;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.booking-form h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.booking-intro {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.box-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.booking-form h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  text-align: left;
+  font-weight: normal;
+  width: 100%;
+}
+
+.booking-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #333;
+  width: 100%;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="tel"],
+.booking-form input[type="number"],
+.booking-form select,
+.booking-form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+}
+
+.booking-form .form-group {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.booking-form button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.booking-form button:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+.booking-confirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.confirmation-circle {
+  background-color: #FFE5E5;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.confirmation-circle h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.confirmation-circle p {
+  font-size: 1rem;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.cta-btn {
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.cta-btn:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+.small-button {
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  background-color: #4CAF50;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.small-button:hover {
+  background-color: #45a049;
+  border-color: #45a049;
+}
+
+/* New styles for the row layout */
+.flex-row {
+  display: flex;
+  justify-content: left; /* Aligns items to the left */
+  margin-bottom: 10px;
+}
+
+.flex-row select {
+  width: 48%; /* Ensure both selects fit in one row */
+  margin-right: 10px; /* Adds space between the selects */
+}

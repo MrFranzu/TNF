@@ -1,0 +1,61 @@
+/* Contact.css */
+
+/* Container for the contact form */
+.contact-container {
+    max-width: 600px; /* Limit form width */
+    margin: 0 auto; /* Center the form */
+    padding: 20px; /* Add some padding */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Form title */
+  .contact-container h1 {
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 20px; /* Space below title */
+    text-align: center; /* Center the title */
+    color: #333; /* Dark text color */
+  }
+  
+  /* Form elements */
+  .contact-container label {
+    display: block; /* Block display for labels */
+    margin-bottom: 8px; /* Space below labels */
+    font-weight: bold; /* Make label text bold */
+    color: #333; /* Dark text color */
+  }
+  
+  .contact-container input[type="text"],
+  .contact-container input[type="email"],
+  .contact-container textarea {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Padding inside inputs */
+    margin-bottom: 16px; /* Space below inputs */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    font-size: 1rem; /* Standard font size */
+  }
+  
+  .contact-container textarea {
+    height: 150px; /* Fixed height for textarea */
+    resize: vertical; /* Allow vertical resizing */
+  }
+  
+  /* Submit button */
+  .contact-container button {
+    padding: 15px 25px; /* Padding for the button */
+    font-size: 1rem; /* Standard font size */
+    color: white; /* White text color */
+    background-color: #3498db; /* Button color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+  }
+  
+  .contact-container button:hover {
+    background-color: #2980b9; /* Darker color on hover */
+  }
+  
