@@ -15,14 +15,9 @@ const BookingForm = () => {
   const [notes, setNotes] = useState('');
   const [isBooked, setIsBooked] = useState(false);
 
-  // Handle the contact number input and ensure only numbers
   const handleContactNumberChange = (e) => {
     const value = e.target.value;
-
-    // Remove any non-numeric characters (allows only digits)
     const numericValue = value.replace(/\D/g, '');
-
-    // Set the state to the numeric value and limit to 11 digits
     if (numericValue.length <= 11) {
       setContactNumber(numericValue);
     }
@@ -31,15 +26,15 @@ const BookingForm = () => {
   const handleNext = (e) => {
     e.preventDefault();
 
-    // Validation for contact number
     if (contactNumber.length !== 11) {
       alert('Please enter exactly 11 digits for the contact number.');
-      return; // Prevent form from proceeding if validation fails
+      return;
     }
 
     if (step === 1) {
       setStep(2);
     } else {
+      // Simulate booking success
       setIsBooked(true);
       resetForm();
     }
@@ -54,11 +49,7 @@ const BookingForm = () => {
 
   const handleDone = () => {
     setIsBooked(false);
-    window.location.href = '/'; // Change this to your home URL
-  };
-
-  const handleEventTypeChange = (e) => {
-    setEventType(e.target.value); // Update eventType state based on selected radio button
+    // Optionally reset the form or redirect
   };
 
   const resetForm = () => {
@@ -84,7 +75,6 @@ const BookingForm = () => {
             <form onSubmit={handleNext}>
               <div className="box-container">
                 <h2>Personal Information</h2>
-                <label htmlFor="name">Name</label>
                 <input
                   type="text"
                   id="name"
@@ -101,7 +91,7 @@ const BookingForm = () => {
                   name="contactNumber"
                   placeholder="Your 11-digit Contact Number"
                   value={contactNumber}
-                  onChange={handleContactNumberChange} // Use the custom handler
+                  onChange={handleContactNumberChange}
                   required
                   maxLength="11"
                 />
@@ -158,7 +148,7 @@ const BookingForm = () => {
                         name="eventType"
                         value="catering"
                         checked={eventType === 'catering'}
-                        onChange={handleEventTypeChange} // Correctly handle event type change
+                        onChange={(e) => setEventType(e.target.value)}
                         required
                       />
                       Catering
@@ -170,14 +160,14 @@ const BookingForm = () => {
                         name="eventType"
                         value="event-center"
                         checked={eventType === 'event-center'}
-                        onChange={handleEventTypeChange}
+                        onChange={(e) => setEventType(e.target.value)}
                         required
                       />
                       Event Center
                     </label>
                   </div>
                 </div>
-                <label htmlFor="eventTheme">Event Theme</label>
+                
                 <input
                   type="text"
                   id="eventTheme"
