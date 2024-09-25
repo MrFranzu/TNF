@@ -15,11 +15,11 @@ const Home = () => {
         </div>
         <div className="box">
           <img src="/assets/balloon.png" alt="Description 2" className="box-image" />
-          <p className="box-description">Description for Box 2</p>
+          <p className="box-description">Event 2</p>
         </div>
         <div className="box">
           <img src="/assets/background.png" alt="Description 3" className="box-image" />
-          <p className="box-description">Description for Box 3</p>
+          <p className="box-description">Event 3</p>
         </div>
       </div>
     </div>

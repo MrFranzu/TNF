@@ -10,7 +10,6 @@ const Header = ({ setCurrentPage }) => {
           <li><button onClick={() => setCurrentPage('home')}>Home</button></li>
           <li><button onClick={() => setCurrentPage('about')}>About</button></li>
           <li><button onClick={() => setCurrentPage('contact')}>Contact Us</button></li>
-          <li><button onClick={() => setCurrentPage('admin')}>Admin</button></li> 
         </ul>
       </nav>
     </header>

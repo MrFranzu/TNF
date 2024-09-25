@@ -25,31 +25,27 @@ const BookingForm = () => {
 
   const handleNext = (e) => {
     e.preventDefault();
-
     if (contactNumber.length !== 11) {
       alert('Please enter exactly 11 digits for the contact number.');
       return;
     }
-
     if (step === 1) {
       setStep(2);
     } else {
-      // Simulate booking success
-      setIsBooked(true);
-      resetForm();
+      setStep(3); // Move to summary step
     }
   };
 
   const handlePrevious = (e) => {
     e.preventDefault();
     if (step > 1) {
-      setStep(1);
+      setStep(step - 1);
     }
   };
 
   const handleDone = () => {
-    setIsBooked(false);
-    // Optionally reset the form or redirect
+    setIsBooked(true);
+    resetForm();
   };
 
   const resetForm = () => {
@@ -63,7 +59,34 @@ const BookingForm = () => {
     setEventDate('');
     setMenuPackage('');
     setNotes('');
+    setStep(1);
   };
+
+  const renderSummary = () => {
+    return (
+      <div className="summary">
+        <h2>Summary</h2>
+        <div className="summary-item"><strong>Name:</strong> {name}</div>
+        <div className="summary-item"><strong>Contact Number:</strong> {contactNumber}</div>
+        <div className="summary-item"><strong>Email:</strong> {email}</div>
+        <div className="summary-item"><strong>Payment Method:</strong> {paymentMethod}</div>
+        <div className="summary-item"><strong>Number of Attendees:</strong> {numAttendees}</div>
+        <div className="summary-item"><strong>Event Type:</strong> {eventType}</div>
+        <div className="summary-item"><strong>Event Theme:</strong> {eventTheme}</div>
+        <div className="summary-item"><strong>Event Date:</strong> {eventDate}</div>
+        <div className="summary-item"><strong>Menu Package:</strong> {menuPackage}</div>
+        <div className="summary-item"><strong>Notes:</strong> {notes}</div>
+        <div className="button-container">
+          <button type="button" onClick={handleDone}>Confirm</button>
+        </div>
+      </div>
+    );
+  };
+
+  const eventTypes = [
+    { id: 'catering', label: 'Catering' },
+    { id: 'event-center', label: 'Event Center' },
+  ];
 
   return (
     <div className="booking-form">
@@ -120,7 +143,6 @@ const BookingForm = () => {
                   <option value="bank-transfer">Bank Transfer</option>
                   <option value="cash">Cash</option>
                 </select>
-                <label htmlFor="numAttendees">Number of Attendees</label>
                 <input
                   type="number"
                   id="numAttendees"
@@ -134,40 +156,30 @@ const BookingForm = () => {
               </div>
               <button type="submit">Next</button>
             </form>
-          ) : (
+          ) : step === 2 ? (
             <form onSubmit={handleNext}>
               <div className="box-container">
-                <h2>Event Details</h2>
+                <h2>Event Type</h2>
                 <div className="radio-group">
-                  <label>Event Type</label>
-                  <div className="radio-options">
-                    <label htmlFor="catering">
+                  {eventTypes.map((event) => (
+                    <label
+                      htmlFor={event.id}
+                      key={event.id}
+                      className={eventType === event.label ? 'active' : ''}
+                    >
                       <input
                         type="radio"
-                        id="catering"
+                        id={event.id}
                         name="eventType"
-                        value="catering"
-                        checked={eventType === 'catering'}
+                        value={event.label}
+                        checked={eventType === event.label}
                         onChange={(e) => setEventType(e.target.value)}
                         required
                       />
-                      Catering
+                      {event.label}
                     </label>
-                    <label htmlFor="event-center">
-                      <input
-                        type="radio"
-                        id="event-center"
-                        name="eventType"
-                        value="event-center"
-                        checked={eventType === 'event-center'}
-                        onChange={(e) => setEventType(e.target.value)}
-                        required
-                      />
-                      Event Center
-                    </label>
-                  </div>
+                  ))}
                 </div>
-                
                 <input
                   type="text"
                   id="eventTheme"
@@ -210,6 +222,8 @@ const BookingForm = () => {
                 <button type="submit">Submit</button>
               </div>
             </form>
+          ) : (
+            renderSummary() // Render the summary
           )}
         </>
       ) : (
@@ -219,7 +233,6 @@ const BookingForm = () => {
             <p>The admin will notify you once they reviewed your request.</p>
             <p>Please check your email for updates.</p>
             <p>Thank you for choosing TNF Event Center!</p>
-            <button className="cta-btn" onClick={handleDone}>DONE</button>
           </div>
         </div>
       )}
