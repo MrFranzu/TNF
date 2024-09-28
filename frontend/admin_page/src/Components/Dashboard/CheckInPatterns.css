@@ -1,0 +1,25 @@
+.container {
+    background: linear-gradient(to right, #ffcccb, #ffe5b4);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.container:hover {
+    transform: scale(1.02);
+}
+
+h2 {
+    color: #d63d7f; /* Light pink */
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    padding: 20px;
+    border: 2px solid #ffb3b3; /* Light pink border */
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+}
