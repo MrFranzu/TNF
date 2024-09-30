@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BookingForm.css';
 import { db } from './firebaseConfig'; 
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, doc, setDoc } from 'firebase/firestore';
 
 const BookingForm = () => {
   const [step, setStep] = useState(1);
@@ -63,12 +63,27 @@ const BookingForm = () => {
       return;
     }
 
-    const bookingData = { name, contactNumber, email, paymentMethod, numAttendees, eventType, eventTheme, eventDate, menuPackage, notes };
+    const bookingData = {
+      name,
+      contactNumber,
+      email,
+      paymentMethod,
+      numAttendees,
+      eventType,
+      eventDate,
+      menuPackage,
+      notes,
+    };
+
     setLoading(true);
 
     try {
-      const docRef = await addDoc(collection(db, 'bookings'), bookingData);
-      console.log("Document written with ID: ", docRef.id);
+      // Create a document reference for the eventTheme document in 'bookings'
+      const eventThemeDocRef = doc(db, 'bookings', eventTheme);
+      
+      // Create a document in the 'details' subcollection of the eventTheme document
+      await setDoc(doc(collection(eventThemeDocRef, 'details')), bookingData);
+      console.log("Document written with ID: ", eventThemeDocRef.id);
       setIsBooked(true);
       resetForm();
     } catch (e) {
@@ -82,8 +97,21 @@ const BookingForm = () => {
   const renderSummary = () => (
     <div className="summary">
       <h2>Summary</h2>
-      {Object.entries({ name, contactNumber, email, paymentMethod, numAttendees, eventType, eventTheme, eventDate, menuPackage, notes }).map(([key, value]) => (
-        <div className="summary-item" key={key}><strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}</div>
+      {Object.entries({
+        name,
+        contactNumber,
+        email,
+        paymentMethod,
+        numAttendees,
+        eventType,
+        eventTheme,
+        eventDate,
+        menuPackage,
+        notes,
+      }).map(([key, value]) => (
+        <div className="summary-item" key={key}>
+          <strong>{key.charAt(0).toUpperCase() + key.slice(1)}:</strong> {value}
+        </div>
       ))}
       <div className="button-container">
         {loading ? <p>Loading...</p> : <button type="button" onClick={handleDone}>Confirm</button>}
