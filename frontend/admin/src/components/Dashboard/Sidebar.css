@@ -1,0 +1,43 @@
+.drawer {
+    background: linear-gradient(to bottom, #ffccf2, #ffe6cc) !important;
+    height: 100% !important;
+    padding: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.list {
+    width: 100% !important;
+}
+
+.listItem {
+    margin: 10px 0 !important;
+    transition: background 0.3s !important;
+}
+
+.listItem:hover {
+    background: rgba(255, 200, 200, 0.5) !important;
+}
+
+.listItemIcon {
+    color: #ff6f61 !important;
+}
+
+.listItemText {
+    font-size: 1.1rem !important;
+    color: #333 !important;
+    font-weight: bold !important;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .drawer {
+        width: 70% !important; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .drawer {
+        width: 100% !important; /* Full width for mobile */
+    }
+}

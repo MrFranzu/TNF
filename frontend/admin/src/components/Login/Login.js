@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
 
         if (username === hardcodedUsername && password === hardcodedPassword) {
             onLogin();
-            navigate('/');
+            navigate('/'); // Navigate to main content
         } else {
             alert('Invalid username or password!');
         }

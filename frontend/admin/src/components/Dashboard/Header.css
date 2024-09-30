@@ -1,0 +1,68 @@
+/* Header.css */
+
+.header {
+    background: linear-gradient(to right, #ffcccb, #ffebcc) !important; /* Light pink to light orange gradient */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+    position: fixed !important; /* Fixed position to keep it at the top */
+    top: 0 !important; /* Align it to the top */
+    left: 0 !important; /* Align it to the left */
+    right: 0 !important; /* Align it to the right */
+    z-index: 1000 !important; /* Ensure it stays above other elements */
+  }
+  
+  .toolbar {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+  }
+  
+  .title {
+    font-family: 'Arial', sans-serif !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    color: #ff6f61 !important; /* A contrasting color for readability */
+    transition: transform 0.3s !important;
+  }
+  
+  .title:hover {
+    transform: scale(1.05) !important;
+  }
+  
+  .button-container {
+    display: flex !important;
+    gap: 15px !important; /* Space between buttons */
+  }
+  
+  button {
+    background-color: #ff6f61 !important; /* Button background color */
+    color: white !important; /* Button text color */
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 10px 15px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s, transform 0.3s !important;
+  }
+  
+  button:hover {
+    background-color: #ff8a65 !important; /* Slightly darker on hover */
+    transform: translateY(-2px) !important;
+  }
+  
+  @media (max-width: 600px) {
+    .toolbar {
+      flex-direction: column !important; /* Stack items on smaller screens */
+      align-items: flex-start !important;
+    }
+  
+    .title {
+      margin-bottom: 10px !important;
+      text-align: center !important; /* Center the title on small screens */
+    }
+  
+    .button-container {
+      width: 100% !important;
+      justify-content: center !important; /* Center buttons on small screens */
+    }
+  }
+  
