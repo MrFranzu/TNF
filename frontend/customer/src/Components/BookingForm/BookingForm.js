@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './BookingForm.css';
-import { db } from './firebaseConfig'; 
+import { db } from './firebaseConfig';
 import { collection, doc, setDoc } from 'firebase/firestore';
+import { QRCodeCanvas } from 'qrcode.react';
 
 const BookingForm = () => {
   const [step, setStep] = useState(1);
@@ -17,6 +18,7 @@ const BookingForm = () => {
   const [notes, setNotes] = useState('');
   const [isBooked, setIsBooked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [qrCodeValue, setQrCodeValue] = useState('');
 
   const handleContactNumberChange = (e) => {
     const value = e.target.value.replace(/\D/g, '');
@@ -62,6 +64,8 @@ const BookingForm = () => {
       alert('Please enter a valid email address.');
       return;
     }
+    const uniqueCode = `${eventTheme}-${numAttendees}-${Date.now()}`;
+    setQrCodeValue(uniqueCode);
 
     const bookingData = {
       name,
@@ -73,15 +77,14 @@ const BookingForm = () => {
       eventDate,
       menuPackage,
       notes,
+      qrCode: uniqueCode,
+      scannedCount: 0, // To track scanned attendees
+      maxAttendees: numAttendees,
     };
 
     setLoading(true);
-
     try {
-      // Create a document reference for the eventTheme document in 'bookings'
       const eventThemeDocRef = doc(db, 'bookings', eventTheme);
-      
-      // Create a document in the 'details' subcollection of the eventTheme document
       await setDoc(doc(collection(eventThemeDocRef, 'details')), bookingData);
       console.log("Document written with ID: ", eventThemeDocRef.id);
       setIsBooked(true);
@@ -116,6 +119,7 @@ const BookingForm = () => {
       <div className="button-container">
         {loading ? <p>Loading...</p> : <button type="button" onClick={handleDone}>Confirm</button>}
       </div>
+      {isBooked && <QRCodeCanvas value={qrCodeValue} size={256} style={{ margin: 'auto' }} />}
     </div>
   );
 
@@ -183,6 +187,8 @@ const BookingForm = () => {
         <div className="thank-you">
           <h2>Thank You!</h2>
           <p>Your booking has been confirmed.</p>
+          <p>Event Theme: {eventTheme}</p>
+          <QRCodeCanvas value={qrCodeValue} size={256} style={{ margin: 'auto' }} />
         </div>
       )}
     </div>

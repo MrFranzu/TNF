@@ -1,0 +1,57 @@
+.qr-scanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffe6f2; /* Light pink */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .qr-scanner:hover {
+    background-color: #ffccff; /* Slightly darker pink on hover */
+  }
+  
+  h2 {
+    color: #ff66b2; /* A darker shade of pink for the header */
+  }
+  
+  .loading, .error, .result {
+    color: #ff7f50; /* Light orange */
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  
+  .error {
+    color: #ff4d4d; /* Red for error messages */
+  }
+  
+  @media (max-width: 600px) {
+    .qr-scanner {
+      padding: 15px;
+    }
+  
+    h2 {
+      font-size: 1.5em;
+    }
+  
+    .loading, .error, .result {
+      font-size: 1em;
+    }
+  }
+  
+  .qr-scanner {
+    text-align: center;
+  }
+  
+  .qr-reader {
+    width: 200px; /* Adjust width for a smaller camera view */
+    height: 200px; /* Adjust height for a smaller camera view */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    margin: 0 auto; /* Center the camera */
+  }
+  

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
@@ -28,7 +27,11 @@ const App = () => {
       case 'about':
         return <About />;
       case 'booking':
-        return <BookingForm />;
+        return (
+          <>
+            <BookingForm />
+          </>
+        );
       case 'contact':
         return <Contact />;
       default:
@@ -37,7 +40,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
       <Header 
         setCurrentPage={setCurrentPage} 
         currentPage={currentPage} 

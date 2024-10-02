@@ -7,7 +7,8 @@ import MainContent from './components/Dashboard/MainContent';
 import Login from './components/Login/Login';
 import './App.css'; // Import your CSS file
 
-function App() {
+
+const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = () => {
@@ -18,25 +19,27 @@ function App() {
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={isLoggedIn ? (
-            <>
-              <div className="sidebar"><Sidebar /></div>
-              <div style={{ flexGrow: 1 }}>
-                <Header />
-                <Container>
-                  <Grid container spacing={3}>
-                    <MainContent />
-                  </Grid>
-                </Container>
-              </div>
-            </>
-          ) : (
-            <div className="login-form"><Login onLogin={handleLogin} /></div>
-          )} />
+          <Route path="/" element={
+            isLoggedIn ? (
+              <>
+                <div className="sidebar"><Sidebar /></div>
+                <div style={{ flexGrow: 1 }}>
+                  <Header />
+                  <Container>
+                    <Grid container spacing={3}>
+                      <MainContent />
+                    </Grid>
+                  </Container>
+                </div>
+              </>
+            ) : (
+              <div className="login-form"><Login onLogin={handleLogin} /></div>
+            )
+          } />
         </Routes>
       </div>
     </Router>
   );
-}
+};
 
 export default App;
