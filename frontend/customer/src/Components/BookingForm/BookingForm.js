@@ -78,15 +78,13 @@ const BookingForm = () => {
       menuPackage,
       notes,
       qrCode: uniqueCode,
-      scannedCount: 0, // To track scanned attendees
-      maxAttendees: numAttendees,
     };
 
     setLoading(true);
     try {
-      const eventThemeDocRef = doc(db, 'bookings', eventTheme);
-      await setDoc(doc(collection(eventThemeDocRef, 'details')), bookingData);
-      console.log("Document written with ID: ", eventThemeDocRef.id);
+      const bookingDocRef = doc(db, 'bookings', eventTheme);
+      await setDoc(bookingDocRef, bookingData); // Directly save to the bookings collection
+      console.log("Document written with ID: ", bookingDocRef.id);
       setIsBooked(true);
       resetForm();
     } catch (e) {
@@ -185,9 +183,8 @@ const BookingForm = () => {
         </>
       ) : (
         <div className="thank-you">
-          <h2>Thank You!</h2>
-          <p>Your booking has been confirmed.</p>
-          <p>Event Theme: {eventTheme}</p>
+          <h2>Thank you for booking!</h2>
+          <p>Kindly <strong>Screenshot</strong> or <strong>take a photo</strong> of this.</p>
           <QRCodeCanvas value={qrCodeValue} size={256} style={{ margin: 'auto' }} />
         </div>
       )}

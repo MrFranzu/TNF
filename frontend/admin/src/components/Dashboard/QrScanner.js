@@ -10,6 +10,7 @@ const QrScanner = () => {
   const [error, setError] = useState('');
   const [isScanning, setIsScanning] = useState(true);
   const [lastScannedData, setLastScannedData] = useState('');
+  const [notificationShown, setNotificationShown] = useState(false);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,22 +32,19 @@ const QrScanner = () => {
       return;
     }
 
-    if (loading) return;
-
     const scannedData = result.text.trim();
-    console.log("Checking document with ID:", scannedData);
 
-    // Ignore duplicate scans
-    if (scannedData === lastScannedData) {
+    // Prevent further processing while loading or if the same QR code was scanned
+    if (loading || scannedData === lastScannedData) {
       console.warn("Duplicate scan ignored:", scannedData);
       return;
     }
 
-    console.log("QR Code scanned:", scannedData);
     setLastScannedData(scannedData);
     setResult(scannedData);
     setLoading(true);
     setError('');
+    setNotificationShown(false); // Reset notification flag
 
     const eventRef = doc(db, 'bookings', scannedData);
 
@@ -55,17 +53,23 @@ const QrScanner = () => {
       if (currentData.exists()) {
         const scannedCount = currentData.data().scannedCount || 0;
 
-        const confirmScan = window.confirm(`Document exists. Current scan count is ${scannedCount}. Do you want to increment the count?`);
-        if (confirmScan) {
-          await setDoc(eventRef, { scannedCount: scannedCount + 1 }, { merge: true });
-          alert(`Successfully scanned! New count: ${scannedCount + 1}`);
-        } else {
-          console.log("Scan was canceled by user.");
+        // Show confirmation only if not already shown
+        if (!notificationShown) {
+          const confirmScan = window.confirm(`Document exists. Current scan count is ${scannedCount}. Do you want to increment the count?`);
+          if (confirmScan) {
+            await setDoc(eventRef, { scannedCount: scannedCount + 1 }, { merge: true });
+            alert(`Successfully scanned! New count: ${scannedCount + 1}`);
+          } else {
+            console.log("Scan was canceled by user.");
+          }
+          setNotificationShown(true); // Mark notification as shown
         }
       } else {
-        // Create the document with initial scannedCount
         await setDoc(eventRef, { scannedCount: 1 });
-        alert("Document did not exist. It has been created with a scanned count of 1.");
+        if (!notificationShown) {
+          alert("Document did not exist. It has been created with a scanned count of 1.");
+          setNotificationShown(true); // Mark notification as shown
+        }
         setError("Document did not exist and has been created.");
       }
     } catch (err) {

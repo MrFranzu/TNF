@@ -40,6 +40,18 @@
     .drawer {
         width: 100% !important; /* Full width for mobile */
     }
+    
 }
-
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0; /* Add padding for spacing */
+  }
+  
+  .logo {
+    width: 100%; /* or specify a width like 150px */
+    max-width: 150px; /* Set a max width */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
 

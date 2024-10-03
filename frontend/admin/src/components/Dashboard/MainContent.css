@@ -1,61 +1,65 @@
-.gridContainer {
-    padding: 20px !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-}
+/* MainContent.css */
 
-.paper {
-    background-color: #fff5f7 !important; /* Light pink */
+body {
+    margin: 0 !important;
+    font-family: Arial, sans-serif !important;
+    background-color: #fff4f4 !important; /* Light pink background */
+  }
+  
+  .gridContainer {
+    padding: 20px !important;
+  }
+  
+  .paper {
+    background-color: #ffedcc !important; /* Light orange background */
     border-radius: 10px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
-    transition: transform 0.3s, box-shadow 0.3s !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    padding: 20px !important;
-    margin: 10px !important;
-    cursor: pointer !important;
-}
-
-.paper:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+  
+  .paper:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
-}
-
-.typography {
-    color: #ff6f61 !important; /* Light orange */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  .typography {
+    color: #d52b1e !important; /* Darker pink for text */
     font-weight: bold !important;
-    margin-bottom: 10px !important;
-    text-align: center !important;
-}
-
-.chart {
-    background-color: #ffe0b2 !important; /* Light orange background for charts */
+    margin-bottom: 15px !important;
+  }
+  
+  .chart {
+    background-color: #ffffff !important; /* White background for charts */
     border-radius: 5px !important;
-    padding: 20px !important;
+    padding: 10px !important;
     text-align: center !important;
-    flex-grow: 1 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    height: 150px !important; /* Fixed height for chart area */
-}
-
-@media (max-width: 600px) {
-    .paper {
-        flex-basis: 100% !important; /* Full width on smaller screens */
+    border: 1px solid #d52b1e !important; /* Border matching the text color */
+  }
+  
+  button {
+    background-color: #ff6f61 !important; /* Light orange button */
+    color: white !important;
+    border: none !important;
+    border-radius: 5px !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s, transform 0.2s !important;
+    font-weight: bold !important;
+  }
+  
+  button:hover {
+    background-color: #ff4e4e !important; /* Darker orange on hover */
+    transform: scale(1.05) !important;
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 600px) {
+    .typography {
+      font-size: 1.5em !important; /* Adjust font size for smaller screens */
     }
-}
-
-@media (min-width: 600px) and (max-width: 960px) {
-    .paper {
-        flex-basis: 45% !important; /* Slightly smaller width for medium screens */
+    
+    button {
+      width: 100% !important; /* Full width button on small screens */
     }
-}
-
-@media (min-width: 960px) {
-    .paper {
-        flex-basis: 30% !important; /* Standard width for larger screens */
-    }
-}
+  }
+  
