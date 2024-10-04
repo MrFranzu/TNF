@@ -1,0 +1,90 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffebee; /* Light pink background */
+    color: #333;
+  }
+  
+  /* Hamburger menu */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #ff7043; /* Light orange */
+    margin: 5px 0;
+    transition: all 0.3s ease;
+  }
+  
+  /* QR generator styling */
+  .qr-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffccbc, #ffab91); /* Gradient background */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .qr-generator h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #d32f2f; /* Darker accent color */
+  }
+  
+  .qr-generator input {
+    padding: 10px;
+    width: 80%;
+    border: 2px solid #ff7043; /* Light orange border */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+  
+  .qr-generator button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff7043; /* Light orange button */
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .qr-generator button:hover {
+    background-color: #ff5722; /* Darker orange on hover */
+  }
+  
+  .qr-code {
+    margin-top: 20px;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 600px) {
+    .qr-generator h1 {
+      font-size: 2rem;
+    }
+  
+    .qr-generator input,
+    .qr-generator button {
+      width: 90%;
+    }
+  }
+  

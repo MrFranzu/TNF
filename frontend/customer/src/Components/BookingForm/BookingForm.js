@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BookingForm.css';
 import { db } from './firebaseConfig';
-import { collection, doc, setDoc } from 'firebase/firestore';
+import { collection, doc, setDoc, Timestamp } from 'firebase/firestore';
 import { QRCodeCanvas } from 'qrcode.react';
 
 const BookingForm = () => {
@@ -67,22 +67,23 @@ const BookingForm = () => {
     const uniqueCode = `${eventTheme}-${numAttendees}-${Date.now()}`;
     setQrCodeValue(uniqueCode);
 
+    // Convert types here
     const bookingData = {
       name,
-      contactNumber,
+      contactNumber: Number(contactNumber), // Convert to number
       email,
       paymentMethod,
-      numAttendees,
+      numAttendees: Number(numAttendees), // Convert to number
       eventType,
-      eventDate,
+      eventDate: Timestamp.fromDate(new Date(eventDate)), // Convert to Firestore Timestamp
       menuPackage,
       notes,
-      qrCode: uniqueCode,
+      qrCode: uniqueCode, // Store the unique code in the qrCode field
     };
 
     setLoading(true);
     try {
-      const bookingDocRef = doc(db, 'bookings', eventTheme);
+      const bookingDocRef = doc(db, 'bookings', uniqueCode); // Change to use qrCode
       await setDoc(bookingDocRef, bookingData); // Directly save to the bookings collection
       console.log("Document written with ID: ", bookingDocRef.id);
       setIsBooked(true);

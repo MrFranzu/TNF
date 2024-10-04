@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 1.5em; /* Smaller title font size */
+}
+
+.calendar-container {
+  margin: 20px 0;
+}
+
+.calendar {
+  width: 400px; /* Bigger calendar size */
+  height: auto; /* Adjust height as needed */
+}
+
+.events-title {
+  font-size: 1.2em; /* Smaller events title */
+}
+
+.events-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.event-item {
+  margin-bottom: 15px;
+  font-size: 0.9em; /* Smaller text for event details */
+}
+
+.event-name {
+  font-weight: bold;
+}
+
+.event-details,
+.event-contact,
+.event-email,
+.event-payment,
+.event-attendees,
+.event-scanned,
+.event-notes,
+.event-qr {
+  margin: 5px 0;
+}
+/* Calendar.css */
+.booked-date {
+  background-color: #ffeb3b; /* Change this color as needed */
+  border-radius: 50%;
+  color: #000; /* Text color */
+}
+

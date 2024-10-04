@@ -18,7 +18,7 @@ const QrScanner = () => {
     }, 30000); // Stop scanning after 30 seconds
 
     return () => clearTimeout(timeout);
-  }, [isScanning]);
+  }, []);
 
   const handleResult = async (result, error) => {
     if (error) {
@@ -34,7 +34,7 @@ const QrScanner = () => {
 
     const scannedData = result.text.trim();
 
-    // Prevent further processing while loading or if the same QR code was scanned
+    // Prevent further processing if loading or the same QR code was scanned
     if (loading || scannedData === lastScannedData) {
       console.warn("Duplicate scan ignored:", scannedData);
       return;
@@ -53,14 +53,11 @@ const QrScanner = () => {
       if (currentData.exists()) {
         const scannedCount = currentData.data().scannedCount || 0;
 
-        // Show confirmation only if not already shown
         if (!notificationShown) {
           const confirmScan = window.confirm(`Document exists. Current scan count is ${scannedCount}. Do you want to increment the count?`);
           if (confirmScan) {
             await setDoc(eventRef, { scannedCount: scannedCount + 1 }, { merge: true });
             alert(`Successfully scanned! New count: ${scannedCount + 1}`);
-          } else {
-            console.log("Scan was canceled by user.");
           }
           setNotificationShown(true); // Mark notification as shown
         }

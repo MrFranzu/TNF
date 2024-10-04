@@ -1,61 +1,73 @@
-/* QrScanner.css */
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Body styling */
 body {
-  margin: 0 !important;
-  font-family: Arial, sans-serif !important;
-  background-color: #fff4f4 !important; /* Light pink background */
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  height: 100vh !important;
+  font-family: 'Arial', sans-serif;
+  background-color: #ffebee; /* Light pink background */
+  color: #333;
 }
 
-.qr-scanner {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: linear-gradient(135deg, #ffcccb, #ffedcc) !important; /* Light pink to light orange gradient */
-  border-radius: 10px !important;
-  padding: 20px !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-  max-width: 90% !important; /* Responsive width */
-  text-align: center !important;
+/* QR generator styling */
+.qr-generator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ffccbc, #ffab91); /* Gradient background */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  color: #d52b1e !important; /* Darker pink for the title */
-  margin-bottom: 20px !important;
+.qr-generator h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #d32f2f; /* Darker accent color */
 }
 
-.qr-reader {
-  width: 100% !important; /* Full width for the QR reader */
-  max-width: 400px !important; /* Max width for larger screens */
-  border: 2px solid #ff6f61 !important; /* Light orange border */
-  border-radius: 10px !important;
+.qr-generator input {
+  padding: 10px;
+  width: 80%;
+  border: 2px solid #ff7043; /* Light orange border */
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
 }
 
-.loading, .error, .result {
-  color: #d52b1e !important; /* Dark pink for text */
-  margin: 10px 0 !important;
-  font-weight: bold !important;
+.qr-generator button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff7043; /* Light orange button */
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.loading {
-  animation: pulse 1s infinite !important; /* Animation for loading */
+.qr-generator button:hover {
+  background-color: #ff5722; /* Darker orange on hover */
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 0.7 !important;
-  }
-  50% {
-    opacity: 1 !important;
-  }
+.qr-code {
+  margin-top: 20px;
 }
 
+/* Responsive design */
 @media (max-width: 600px) {
-  h2 {
-    font-size: 1.5em !important; /* Responsive font size */
+  .qr-generator h1 {
+    font-size: 2rem;
+  }
+
+  .qr-generator input,
+  .qr-generator button {
+    width: 90%;
   }
 }
